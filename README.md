@@ -26,6 +26,6 @@ Il est **impossible d’avoir un score négatif**, on ne peut donc pas acheter d
 
 - 🐁 **Option Auto-click** : Une option apparaît lorsque l’utilisateur atteint 3000 de score, il peux alors acheter contre 3000 de score une fonction qui clic à sa place toute les 50 secondes par exemple. ! CETTE OPTION NE PEUT ÊTRE PRISE QUE UNE FOIS
 
-# Cookies everywhere !
+# Cookies everywhere ! check the wiki for the doc's !
 
 ![CookieClicker-example](https://media.giphy.com/media/3oKIPakqw5iwtPKq64/giphy.gif)
