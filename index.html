@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -17,6 +18,32 @@
     <title>Cookie Cliker</title>
   </head>
   <body>
+
+<!-- SECTION QUI CONTIENT LE HEADER -->
+    <header class="fullscreen">
+        <h1>Cookie Clicker</h1>
+        <h2>Score</h2>
+        <p id="scoreclick"></p>
+        <p id="scoreclickbonus"></p>
+    </header>
+
+<!-- SECTION QUI CONTIENT TOUT LES ELEMENTS DE LA PAGE EN DISPLAY FLEX -->
+    <section class="row"></section>
+
+<!-- SECTION QUI CONTIENT LE COOKIE -->
+    <section id="cookie" class="flexitemleft">
+      <img class="cookieimg" src="/images/cookie.png" onclick="cookieClick()" />
+    </section>
+
+<!-- SECTION QUI CONTIENT LES BONUS -->
+    <section class="flexitemright">
+      <p id="bonus">Acheter des bonus et multipliez votre score !</p>
+      <button id="boutonpop" class="first" onclick="boutonpop()"></button>
+      <button id="boutonmulti" class="mid" onclick="boutonmulti()"></button>
+      <button id="boutonautoclick" class="bottom" onclick="autoclick()"></button>
+    </section>
+  </section>
+
     <!-- SECTION QUI CONTIENT LE HEADER -->
     <section class="row">
       <header class="fullscreen">
@@ -80,5 +107,6 @@
     </section>
 
     <script type="module" src="/main.js"></script>
+
   </body>
 </html>
