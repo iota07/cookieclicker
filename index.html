@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Cookie Cliker</title>
   </head>
   <body>
@@ -23,7 +24,14 @@
 
 <!-- SECTION QUI CONTIENT LE COOKIE -->
     <section id="cookie" class="flexitemleft">
-      <img class="cookieimg" src="/images/cookie.png" onclick="cookieClick()" />
+      <div class="game-container">
+        <h1>Cookie Clicker</h1>
+        <div class="cookie-container">
+          <div class="cookie"></div>
+          <p id="cookie-count">0 cookies</p>
+        </div>
+        <button id="click-button">Click the Cookie</button>
+      </div>
     </section>
 
 <!-- SECTION QUI CONTIENT LES BONUS -->
