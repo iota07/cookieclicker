@@ -11,38 +11,68 @@
     <title>Cookie Cliker</title>
   </head>
   <body>
-
-<!-- SECTION QUI CONTIENT LE HEADER -->
-    <header class="fullscreen">
+    <!-- SECTION QUI CONTIENT LE HEADER -->
+    <section class="row">
+      <header class="fullscreen">
         <h1>Cookie Clicker</h1>
         <h2>Score</h2>
         <p id="scoreclick"></p>
         <p id="scoreclickbonus"></p>
-    </header>
+      </header>
 
-<!-- SECTION QUI CONTIENT TOUT LES ELEMENTS DE LA PAGE EN DISPLAY FLEX -->
-    <section class="row"></section>
+      <!-- SECTION QUI CONTIENT LE COOKIE -->
+      <section id="cookie" class="flexitemleft">
+        <div class="game-container">
+          <h1>Cookie Clicker</h1>
+          <div class="cookie-container">
+            <div class="cookie"></div>
+            <p id="cookie-count">0 cookies</p>
+          </div>
+        </div>
+      </section>
 
-<!-- SECTION QUI CONTIENT LE COOKIE -->
-    <section id="cookie" class="flexitemleft">
-      <img class="cookieimg" src="/images/cookie.png" onclick="cookieClick()" />
+      <!-- SECTION QUI CONTIENT LES BONUS -->
+      <section class="flexitemright">
+        <p id="bonus">Acheter des bonus et multipliez votre score !</p>
+        <ul>
+          <li>
+            <button
+              id="boutonpop"
+              class="buttonX2"
+              onclick="boutonpop()"
+              role="button"
+              alt="score X2"
+            >
+              Multi X2
+            </button>
+          </li>
+          <li>
+            <button
+              id="boutonmulti"
+              class="buttonX5"
+              onclick="boutonmulti()"
+              role="button"
+              alt="score X5"
+            >
+              Multi X5
+            </button>
+          </li>
+          <li>
+            <button
+              id="boutonautoclick"
+              class="autoClick"
+              onclick="autoclick()"
+              role="button"
+              alt="auto click"
+            >
+              <span class="material-symbols-outlined"> factory </span>The
+              Factory
+            </button>
+          </li>
+        </ul>
+      </section>
     </section>
-
-<!-- SECTION QUI CONTIENT LES BONUS -->
-    <section class="flexitemright">
-      <p id="bonus">Acheter des bonus et multipliez votre score !</p>
-      <button id="boutonpop" class="buttonX2" onclick="boutonpop()" role="button" alt="score X2">Multi X2</button>
-      <br>
-      <br>
-      <button id="boutonmulti" class="buttonX5" onclick="boutonmulti()" role="button" alt="score X2">Multi X5</button>
-      <br>
-      <button id="boutonautoclick" class="autoClick" onclick="autoclick()" role="button" alt="auto click"><span class="material-symbols-outlined">
-        factory
-        </span>The Factory</button>
-    </section>
-  </section>
 
     <script type="module" src="/main.js"></script>
-
   </body>
 </html>
