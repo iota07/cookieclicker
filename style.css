@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap");
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-list-style-type: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
 }
-:root{
---BG-COLOR:  #fff7d4;
---NAVBAR-COLOR:  #45474bc4;
---TEXT-NAVBAR:#fff7d4 ;
-
+:root {
+  --BG-COLOR: #fff7d4;
+  --NAVBAR-COLOR: #45474bc4;
+  --TEXT-NAVBAR: #fff7d4;
 }
 body {
   font-family: "shantell sans", cursive;
@@ -21,12 +20,11 @@ body {
 
 .row {
   display: grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "fullscreen fullscreen"
-    "flexitemleft flexitemright "
-    ;
+    "flexitemleft flexitemright ";
 }
 
 .fullscreen {
@@ -43,8 +41,7 @@ body {
   /* background-color: #f4ce14; */
 }
 
-
-  /* .fullscreen {
+/* .fullscreen {
     grid-area: fullscreen;
   }
 
@@ -59,14 +56,12 @@ body {
     margin-bottom: 10px;
   } */
 
-  /* .game-container {
+/* .game-container {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
   } */
-
-
 
 /* ul {
   list-style: none;
@@ -197,7 +192,6 @@ body {
   }
 }
 
-
 @keyframes flare {
   100% {
     transform: translateY(-20px) scale(1.5);
@@ -305,7 +299,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-img{
+img {
   cursor: pointer;
 }
 
@@ -331,44 +325,41 @@ img{
   background-color: #584848;
 }
 /* Header Start */
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  height: 50px;
+  height: auto;
+  font-size: 0.875em;
   background-color: var(--NAVBAR-COLOR);
   color: var(--TEXT-NAVBAR);
-  
-  
-  }
-  ul{
+}
+ul {
   text-shadow: 0 0 5px green;
   font-weight: bold;
-  }
-label.logo{
-font-size: 35px;
-font-weight: bold;
-padding-bottom: 1rem;
-line-height: 8px;
 }
-.fullscreen li{
-
-/* font-weight: bold; */
+label.logo {
+  font-size: 35px;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  line-height: 8px;
+}
+.fullscreen li {
+  /* font-weight: bold; */
 }
 @media only screen and (max-width: 740px) {
-    label.logo{
+  label.logo {
     font-size: 20px;
     line-height: 15px;
-    }
-    .navbar{
-    
+  }
+  .navbar {
     padding-left: 1rem;
     gap: 2rem;
-    }
-    
-    img-fluid{
+  }
+
+  img-fluid {
     display: none;
-    }
+  }
   .row {
     display: grid;
     grid-template-columns: 1fr;
@@ -379,33 +370,31 @@ line-height: 8px;
       "flexitemright";
   }
 
-  
   .fullscreen {
     grid-area: fullscreen;
   }
 
-  .flexitemleft{
-  grid-area: flexitemleft;
+  .flexitemleft {
+    grid-area: flexitemleft;
   }
-  .flexitemright{
-  grid-area: flexitemright;
+  .flexitemright {
+    grid-area: flexitemright;
   }
-
 }
 @media only screen and (max-width: 440px) {
-    label.logo{
+  label.logo {
     font-size: 20px;
     line-height: 15px;
-    }
-    .navbar{
-    justify-content:flex-start;
+  }
+  .navbar {
+    justify-content: flex-start;
     padding-left: 1rem;
     gap: 2rem;
-    }
-    .delet{
+  }
+  .delet {
     display: none;
-    }
-   
+  }
+
   .row {
     display: grid;
     grid-template-columns: 1fr;
@@ -416,39 +405,37 @@ line-height: 8px;
       "flexitemright";
   }
 
-  
   .fullscreen {
     grid-area: fullscreen;
   }
 
-  .flexitemleft{
-  grid-area: flexitemleft;
+  .flexitemleft {
+    grid-area: flexitemleft;
   }
-  .flexitemright{
-  grid-area: flexitemright;
+  .flexitemright {
+    grid-area: flexitemright;
   }
-
 }
-.cookie{
-filter: drop-shadow(0 0 2px green);
-animation: rotates 100s linear infinite;
+.cookie {
+  filter: drop-shadow(0 0 2px green);
+  animation: rotates 100s linear infinite;
 }
-@keyframes rotates{
-from{
-transform: rotate(0);
+@keyframes rotates {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-to{
-transform: rotate(360deg);
+.img-fluid {
+  width: 80%;
+  height: auto;
 }
+#bonus {
+  margin: 2rem;
 }
-.img-fluid{
-width: 80% ;
-height: auto;
-}
-#bonus{
-margin: 2rem;
-}
-li button{
-margin-bottom: 5rem;
+li button {
+  margin-bottom: 5rem;
 }
 /* Header End */
