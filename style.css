@@ -27,6 +27,7 @@ body {
     "fullscreen fullscreen"
     "flexitemleft flexitemright "
     ;
+    user-select: none;
 }
 
 .fullscreen {
@@ -36,6 +37,7 @@ body {
 
 .flexitemleft {
   grid-area: flexitemleft;
+ 
   /* background-color: #45474b; */
 }
 .flexitemright {
@@ -43,34 +45,6 @@ body {
   /* background-color: #f4ce14; */
 }
 
-
-  /* .fullscreen {
-    grid-area: fullscreen;
-  }
-
-  .flexitemleft {
-    grid-area: flexitemleft;
-    height: 100vh;
-  }
-  .flexitemright {
-    grid-area: flexitemright;
-  }
-  .flexitemright button {
-    margin-bottom: 10px;
-  } */
-
-  /* .game-container {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  } */
-
-
-
-/* ul {
-  list-style: none;
-} */
 
 /*Bouton POP*/
 .buttonX2 {
@@ -248,20 +222,17 @@ body {
   font-weight: bolder;
   font-size: 1.7rem;
   border-radius: 10px;
+  transform: perspective(500px) rotateY(calc(20deg * var(--_i, -1)));
+  text-shadow: calc(var(--_i, -1) * 0.08em) -0.01em 0 var(--c),
+    calc(var(--_i, -1) * -0.08em) 0.01em 2px #0004;
+  outline-offset: 0.1em;
+  transition: 0.3s;
 }
 
 .autoClick:active {
   background-color: #ffd95a;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
-
-.autoClick {
-  transform: perspective(500px) rotateY(calc(20deg * var(--_i, -1)));
-  text-shadow: calc(var(--_i, -1) * 0.08em) -0.01em 0 var(--c),
-    calc(var(--_i, -1) * -0.08em) 0.01em 2px #0004;
-  outline-offset: 0.1em;
-  transition: 0.3s;
 }
 
 .autoClick:hover,
@@ -290,15 +261,16 @@ body {
 h1 {
   color: #333;
 }
+h3{
+line-height: 1.2;
+}
 
 .cookie-container {
   position: relative;
 }
 
 .cookie {
-  /* width: 180px;
-  height: 180px; */
-  /* background-image: url("/image/image-from-rawpixel-id-12187842-png.png"); */
+  
   background-position: center;
   background-size: auto 100%;
   /* cursor: pointer; */
@@ -335,9 +307,11 @@ img{
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  height: 50px;
+  height: auto;
+  font-size: 0.875em;
   background-color: var(--NAVBAR-COLOR);
   color: var(--TEXT-NAVBAR);
+  line-height: 1.2;
   
   
   }
@@ -345,7 +319,7 @@ img{
   text-shadow: 0 0 5px green;
   font-weight: bold;
   }
-label.logo{
+.logo{
 font-size: 35px;
 font-weight: bold;
 padding-bottom: 1rem;
@@ -356,7 +330,7 @@ line-height: 8px;
 /* font-weight: bold; */
 }
 @media only screen and (max-width: 740px) {
-    label.logo{
+    .logo{
     font-size: 20px;
     line-height: 15px;
     }
@@ -392,10 +366,10 @@ line-height: 8px;
   }
 
 }
-@media only screen and (max-width: 440px) {
-    label.logo{
+/* @media only screen and (max-width: 440px) {
+    .logo{
     font-size: 20px;
-    line-height: 15px;
+    line-height: 25px;
     }
     .navbar{
     justify-content:flex-start;
@@ -404,7 +378,7 @@ line-height: 8px;
     }
     .delet{
     display: none;
-    }
+    } */
    
   .row {
     display: grid;
@@ -450,5 +424,12 @@ margin: 2rem;
 }
 li button{
 margin-bottom: 5rem;
+}
+img:hover{
+opacity: 0.9;
+}
+img:active{
+opacity: 0.8;
+transform: scale();
 }
 /* Header End */
