@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // a changer j'ai mis 3000 mais sava être 0
   let i = 1;
   let points = i;
   let autoClickEnabled = false;
