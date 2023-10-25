@@ -1,1 +1,9 @@
+$primary: #f70090;
+$secondary: #fcfcfc;
+$h1-font-size: 5rem;
+$h2-font-size: 2.5rem;
+$h3-font-size: 15pt;
+
+// Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
