@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // NOS DECLARATIONS
+
   let i = 1;
-  let points = i;
+  let points = 0;
   let autoClickEnabled = false;
   let autoClickInterval;
 
@@ -8,11 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("boutonautoclick");
   const cookieclic = document.getElementById("cookie1");
   const pointsnobonus = document.getElementById("scoreclick");
+  const pointsmoney = document.getElementById("scoremoney");
+
+  //FONCTION COOKIECLIC
 
   cookieclic.addEventListener("click", () => {
     points += i;
     pointsnobonus.textContent = points;
+    pointsmoney.textContent = points;
   });
+
+  //FONCTION AUTOCLICK
 
   startButton.addEventListener("click", () => {
     if (!autoClickEnabled && points >= 50) {
@@ -23,15 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function addPoints(value) {
-    points += value;
-    pointsElement.textContent = points;
-  }
-
-  function subtractPoints(value) {
-    addPoints(-value);
-  }
-
   function autoClick() {
     addPoints(+1);
   }
@@ -41,11 +40,26 @@ document.addEventListener("DOMContentLoaded", function () {
     autoClickInterval = setInterval(autoClick, 500);
   }
 
+  //FONCTION RAJOUTER DES POINTS
+
+  function addPoints(value) {
+    points += value;
+    pointsElement.textContent = points;
+    pointsmoney.textContent = points;
+  }
+
+  //FONCTION ENLEVER DES POINTS   //SCORE MONEY
+
+  function subtractPoints(value) {
+    points -= value;
+    pointsmoney.textContent = points;
+  }
+
   // Appelez cette fonction au chargement de la page pour initialiser le score.
   function initializeGame() {
-    // A MODIFIER J AI MIS CA POUR TEST LE JEUX COMMENCE AVEC 3000 POINTS
     points = 0;
     pointsElement.textContent = points;
+    pointsmoney.textContent = points;
   }
 
   initializeGame();
