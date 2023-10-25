@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
   cookieclic.addEventListener("click", () => {
     points += i;
     pointsnobonus.textContent = points;
-    pointsmoney.textContent = points;
+    let moneyValue = parseInt(pointsmoney.textContent);
+    moneyValue++;
+    pointsmoney.textContent = moneyValue;
   });
 
   //FONCTION AUTOCLICK
@@ -45,22 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
    * @param {number} value
    */
 
-  function addPoints(value) {
-    points += value;
-    pointsElement.textContent = points;
-    pointsmoney.textContent = points;
+  function addPoints() {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    moneyValue++;
+    pointsmoney.textContent = moneyValue;
   }
 
   function subtractPoints(value) {
-    points -= value;
-    pointsmoney.textContent = points;
+    pointsmoney.textContent -= value;
   }
 
   // Appelez cette fonction au chargement de la page pour initialiser le score.
   function initializeGame() {
     points = 0;
-    pointsElement.textContent = points;
-    pointsmoney.textContent = points;
+    pointsElement.textContent = 0;
+    pointsmoney.textContent = 0;
   }
 
   initializeGame();
