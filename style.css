@@ -14,18 +14,19 @@ body {
   font-family: "shantell sans", cursive;
   background-color: var(--BG-COLOR);
   text-align: center;
+ user-select: none;
 }
 
 /* MOBILE */
-
 .row {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    "fullscreen fullscreen"
-    "flexitemleft flexitemright ";
-}
+    "fullscreen fullscreen "
+    "flexitemleft flexitemright "
+    "instruction instruction";
+} 
 
 .fullscreen {
   grid-area: fullscreen;
@@ -40,32 +41,9 @@ body {
   grid-area: flexitemright;
   /* background-color: #f4ce14; */
 }
-
-/* .fullscreen {
-    grid-area: fullscreen;
-  }
-
-  .flexitemleft {
-    grid-area: flexitemleft;
-    height: 100vh;
-  }
-  .flexitemright {
-    grid-area: flexitemright;
-  }
-  .flexitemright button {
-    margin-bottom: 10px;
-  } */
-
-/* .game-container {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  } */
-
-/* ul {
-  list-style: none;
-} */
+.insruction{
+grid-area: instruction;
+}
 
 /*Bouton POP*/
 .buttonX2 {
@@ -293,6 +271,9 @@ h3 {
 }
 img {
   cursor: pointer;
+
+
+
 }
 
 #cookie-count {
@@ -376,16 +357,16 @@ label.logo {
 
 .cookie {
   filter: drop-shadow(0 0 2px green);
-  animation: rotates 100s linear infinite;
+  /* animation: rotates 100s linear infinite; */
 }
-@keyframes rotates {
+/* @keyframes rotates {
   from {
     transform: rotate(0);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 .img-fluid {
   width: 80%;
   height: auto;
@@ -397,3 +378,18 @@ li button {
   margin-bottom: 5rem;
 }
 /* Header End */
+/* Mercredi 25 nouvelle dispossition du container  Start*/
+.flexitemleft{
+border-top-left-radius: ;
+}
+img:hover{
+opacity: 0.9;
+}
+img:active{
+opacity: 0.8;
+transform: scale();
+}
+.instruction{
+df
+}
+/* Mercredi 25 nouvelle dispossition du container  End*/
