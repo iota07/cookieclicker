@@ -40,15 +40,16 @@ document.addEventListener("DOMContentLoaded", function () {
     autoClickInterval = setInterval(autoClick, 500);
   }
 
-  //FONCTION RAJOUTER DES POINTS
+  /**
+   * @description rajouter des points dans html
+   * @param {number} value
+   */
 
   function addPoints(value) {
     points += value;
     pointsElement.textContent = points;
     pointsmoney.textContent = points;
   }
-
-  //FONCTION ENLEVER DES POINTS   //SCORE MONEY
 
   function subtractPoints(value) {
     points -= value;
