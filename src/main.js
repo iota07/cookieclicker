@@ -14,6 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
 
+  // FONCTION COCHON
+  const svgElement = document.querySelector(".zoomable-svg");
+
+  svgElement.addEventListener("click", function () {
+    svgElement.classList.add("accelerate");
+    setTimeout(() => {
+      svgElement.classList.remove("accelerate");
+    }, 50); // Réglez la durée du clic en millisecondes
+  });
+
   //FONCTION COOKIECLIC
 
   cookieclic.addEventListener("click", () => {

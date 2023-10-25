@@ -4,6 +4,67 @@ $h1-font-size: 5rem;
 $h2-font-size: 2.5rem;
 $h3-font-size: 15pt;
 
+// LE COCHON ANIME
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5px, 0);
+  }
+  20% {
+    transform: translate(5px, 0);
+  }
+  30% {
+    transform: translate(-5px, 0);
+  }
+  40% {
+    transform: translate(5px, 0);
+  }
+  50% {
+    transform: translate(-5px, 0);
+  }
+  60% {
+    transform: translate(5px, 0);
+  }
+  70% {
+    transform: translate(-5px, 0);
+  }
+  80% {
+    transform: translate(5px, 0);
+  }
+  90% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.zoomable-svg {
+  transition: transform 0.3s; /* Durée de l'animation de zoom par défaut */
+  animation: shake 20s infinite; /* Utilisation de l'animation de gigotement */
+  cursor: pointer;
+}
+
+.zoomable-svg.accelerate {
+  transition: transform 0.2s; /* Durée de l'animation de zoom accélérée lors du clic */
+  animation: shake 0.5s infinite; /* Animation de gigotement accélérée */
+}
+
+.zoomable-svg:hover {
+  transform: scale(1.2); /* Facteur de zoom au survol */
+}
+
+//LES TYPOGRAPHIES
+
+.custom-h1 {
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-weight: bold;
+}
+
 .custom-h3 {
   font-size: medium;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -42,5 +103,5 @@ $h3-font-size: 15pt;
 }
 
 // Import all of Bootstrap's CSS
-@import "~bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "~bootstrap/scss/bootstrap";
