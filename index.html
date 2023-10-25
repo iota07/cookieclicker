@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Cookie Cliker</title>
-  </head>
-  <body>
-    <!-- SECTION QUI CONTIENT LE HEADER -->
-    <section class="row">
-      <header class="fullscreen">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <title>Cookie Cliker</title>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Shantell+Sans:wght@300;400&display=swap" rel="stylesheet" />
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <title>Cookie Clicker</title>
   </head>
   <body>
  <section class="row">
 <!-- SECTION QUI CONTIENT LE HEADER -->
-    <header class="fullscreen">
-      <ul class="navbar">
-        <label class="logo" >Cookie Clicker</label>
-        <li>Score : <span id="scoreclick"> 0</span></li>
-        <li> <span class="delet">Score with</span> Bonus : <span id="scoreclickbonus"> 0</span></li>
-        
-      </ul>
-        <h1>Cookie Clicker</h1>
-        <h2>Score</h2>
-        <p id="scoreclick"></p>
-        <p id="scoreclickbonus"></p>
-      </header>
-
-
+<header class="fullscreen">
+  <ul class="navbar">
+    <li><h3 class="logo">Cookie Clicker</h3></li>
+    <li>Score : <span id="scoreclick"> 0</span></li>
+    <li>
+      <h3>Score with Bonus :</h3>
+    </li>
+    <li><span id="scoreclickbonus"></span></li>
+    <li>
+      <h3>Money :</h3>
+    </li>
+    <li><span id="scoremoney"></span></li>
+  </ul>
+</header>
       <!-- SECTION QUI CONTIENT LE COOKIE -->
-      <section id="cookie" class="flexitemleft">
+      <section class="flexitemleft">
         <div class="game-container">
-          <h1>Cookie Clicker</h1>
+          <h1>Click sur le cookie</h1>
           <div class="cookie-container">
             <div class="cookie">
-              <img class="img-fluid" src="images/cookie.png" alt="Cookie">
+              <img class="img-fluid" id="cookie1" src="images/cookie.png" alt="Cookie">
             <!-- </div>
             <p id="cookie-count">0 cookies</p>
           </div> -->
@@ -58,7 +49,6 @@
               id="boutonpop"
               class="buttonX2"
               role="button"
-              alt="score X2"
             >
               Multi X2
             </button>
@@ -68,43 +58,18 @@
               id="boutonmulti"
               class="buttonX5"
               role="button"
-              alt="score X5"
             >
               Multi X5
             </button>
           </li>
           <li>
-            <button
-              id="boutonautoclick"
-              class="autoClick"
-              role="button"
-              alt="auto click"
-            >
-              <span class="material-symbols-outlined"> factory </span>The
-              Factory
+            <button id="boutonautoclick" class="autoClick" role="button">
+              <span class="material-symbols-outlined"> factory </span>The Factory
             </button>
           </li>
         </ul>
       </section>
     </section>
-    
-
-<!-- SECTION QUI CONTIENT TOUT LES ELEMENTS DE LA PAGE EN DISPLAY FLEX
-    <section class="row"></section>
-
- SECTION QUI CONTIENT LE COOKIE -->
-    <!-- <section id="cookie" class="flexitemleft">
-      <img class="cookieimg" src="/images/cookie.png" onclick="cookieClick()" />
-    </section> -->
-
-<!-- SECTION QUI CONTIENT LES BONUS -->
-    <!-- <section class="flexitemright">
-      <p id="bonus">Acheter des bonus et multipliez votre score !</p>
-      <button id="boutonpop" class="first" onclick="boutonpop()"></button>
-      <button id="boutonmulti" class="mid" onclick="boutonmulti()"></button>
-      <button id="boutonautoclick" class="bottom" onclick="autoclick()"></button>
-    </section>
-  </section> --> 
       </section>
     </section>
 

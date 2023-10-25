@@ -1,18 +1,66 @@
-function checkMoney(scoreMoney) {
+document.addEventListener("DOMContentLoaded", function () {
+  // NOS DECLARATIONS
 
-  if (scoreMoney < 1000) {
-      document.getElementById('boutonpop').style.display = 'none'; /*if money <1000 button hidden*/
-  } else if (scoreMoney >= 1000 && scoreMoney % 1000 === 0) {
-      document.getElementById('boutonpop').style.display = 'block'; /*if money > 1000 && every 1000 multiplier button Appear for 30sec*/
-      setTimeout(function () {
-          document.getElementById('boutonpop').style.display = 'none';
-      }, 30000);
-  } else {
-      document.getElementById('boutonpop').style.display = 'none'; /*else hidden*/
+  let i = 1;
+  let points = 0;
+  let autoClickEnabled = false;
+  let autoClickInterval;
+
+  const pointsElement = document.getElementById("scoreclickbonus");
+  const startButton = document.getElementById("boutonautoclick");
+  const cookieclic = document.getElementById("cookie1");
+  const pointsnobonus = document.getElementById("scoreclick");
+  const pointsmoney = document.getElementById("scoremoney");
+
+  //FONCTION COOKIECLIC
+
+  cookieclic.addEventListener("click", () => {
+    points += i;
+    pointsnobonus.textContent = points;
+    pointsmoney.textContent = points;
+  });
+
+  //FONCTION AUTOCLICK
+
+  startButton.addEventListener("click", () => {
+    if (!autoClickEnabled && points >= 50) {
+      subtractPoints(50);
+      startAutoClick();
+      autoClickEnabled = true;
+      startButton.style.display = "none";
+    }
+  });
+
+  function autoClick() {
+    addPoints(+1);
   }
-}
 
+  function startAutoClick() {
+    // TEMPS DU CLICK
+    autoClickInterval = setInterval(autoClick, 500);
+  }
 
+  //FONCTION RAJOUTER DES POINTS
 
-document.getElementById('boutonpop').addEventListener('click', function(){
-  scoreGlobal = scoreValue*2 /*Multiply score click X2*/
+  function addPoints(value) {
+    points += value;
+    pointsElement.textContent = points;
+    pointsmoney.textContent = points;
+  }
+
+  //FONCTION ENLEVER DES POINTS   //SCORE MONEY
+
+  function subtractPoints(value) {
+    points -= value;
+    pointsmoney.textContent = points;
+  }
+
+  // Appelez cette fonction au chargement de la page pour initialiser le score.
+  function initializeGame() {
+    points = 0;
+    pointsElement.textContent = points;
+    pointsmoney.textContent = points;
+  }
+
+  initializeGame();
+});
