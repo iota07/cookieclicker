@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const multi = document.getElementById("boutonmulti");
   const coutmulti = 10;
   let multiMultiplier = 1;
-  let nouveau = 5*multiMultiplier;
+  let nouveau = 5;
   
 
   // FONCTION COCHON
@@ -33,14 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //FONCTION COOKIECLIC
-  cookieclic.addEventListener("click", () => {
+
+  cookieclic.addEventListener("click", function() {
     points += i;
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++; 
     if (multiMultiplier !== 1) {
-      moneyValue = moneyValue + nouveau -1;
+      moneyValue = moneyValue + nouveau -6;
       pointsmoney.textContent = moneyValue;
+      
     } else {
       pointsmoney.textContent = moneyValue;
     }   
@@ -51,18 +53,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // bouton multi //
+
+  /*étendre le bouton multi*/
 function multiOff(){
   multi.disabled = true;
 }
 
+/*allumé le bouton multi*/
 function multiOn(){
   multi.disabled = false;
 }
 
+/*ajoute 1 au multiplicateur = nombre de fois qu'on a utilisé le bouton multi*/
 function augCoutMulti(){
   multiMultiplier ++;
+  if (multiMultiplier > 1){
+    nouveau +=5;
+  };
 }
 
+/*Vérifie si on a assez d'argent pour acheter un bouton multi, si oui le bouton est allumé, si non il est éteint */
 function checkMulti(){ 
   let moneyValue = parseInt(pointsmoney.textContent);
   if (moneyValue >= (coutmulti*multiMultiplier)){
@@ -72,8 +82,11 @@ function checkMulti(){
   }
 
 }
-   
 
+/*Après avoir appuyer sur le bouton multi, transform la valeur de cash en nombre, 
+ensuite soustrait à cash le coût du bouton multi X le nombre de fois utilisé.
+Augmente le nombre de fois utilisé +1
+vérifie si on a toujours assez d'argent comparé au nouveau coût du bouton multi*/
 
 multi.addEventListener('click', function(){
   let moneyValue = parseInt(pointsmoney.textContent);
