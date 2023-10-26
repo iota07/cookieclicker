@@ -78,3 +78,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initializeGame();
 });
+
+//FENETRE POP UP
+
+  // Fonction pour ouvrir la fenêtre modale au chargement de la page
+  function openModalOnLoad() {
+    document.getElementById("modalOverlay").style.display = "block";
+    document.getElementById("myModal").style.display = "block";
+  }
+
+  // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
+  window.addEventListener("DOMContentLoaded", openModalOnLoad);
+
+  // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
+  document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("modalOverlay").style.display = "none";
+    document.getElementById("myModal").style.display = "none";
+  });

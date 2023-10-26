@@ -4,11 +4,40 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <link href="../css/styles.min.css" rel="stylesheet">
  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+ <!-- Style Loa Start -->
+ <link rel="stylesheet" href="../css/style.css">
+ <!-- Style Loa End -->
  <title>Cookie Clicker</title>
   </head>
 
   <body class="p-3 bg-primary ">
  
+    <!-- Section Instruction Start -->
+      <!-- Overlay -->
+     <div class="overlay" id="modalOverlay">
+
+     <!-- Modal -->
+     <div class="modal bg-white bg-opacity-75 p-5  mx-auto  d-block " id="myModal">
+      <div class="bg-white p-3 border border-dark rounded position-absolute top-50 start-50 translate-middle m-4">
+         <h2 class="text-center">Ma Fenêtre Modale</h2> <br>
+         <dl class="row">
+          <dt class="col-sm-3"><mark>Bouton POP</mark>  :</dt>
+          <dd class="col-sm-9">A button that appears randomly on the page. Which allows you to multiply your gain by 2.</dd>
+          <dt class="col-sm-3">Bouton Multi : </dt>
+          <dd class="col-sm-9">When the score reaches 1000 points, the "Multi" button appears which allows you to purchase a permanent bonus for x5 clicks. The cost is 1000 points, deducted from the total score. When you reach 2000 points, the "Multi" button reappears and can be redeemed for 2000 points, adding a x3 bonus to clicks.</dd>
+          
+          <dt class="col-sm-3"> Option Auto-click :</dt>
+          <dd class="col-sm-9">When you reach 3000 points, an option appears to purchase an autoclick feature that will click for you every 50 seconds. This option can only be purchased once.</dd>
+         
+         </dl>
+         <button id="closeModal" >Fermer</button>
+     </div>
+    </div>
+    </div>
+   
+    <!-- Section Instruction End -->
+
+
   <!-- LA BOX AVEC LE SCORE -->
   <header class="row align-content-between">
 <span id="scoreclickbonus" class="col-3 d-none"></span>
