@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function autoClick() {
+    clicSound2.play();
     addPoints(+1);
   }
 
