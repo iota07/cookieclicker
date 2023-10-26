@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptButton = document.getElementById("accept-cookies");
 
+  const svgElement = document.querySelector(".zoomable-svg");
+  const clicSound = document.getElementById("clicSound");
+
   // Affichez le cookie banner
 
   acceptButton.addEventListener("click", () => {
@@ -25,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // FONCTION COCHON
-  const svgElement = document.querySelector(".zoomable-svg");
 
   svgElement.addEventListener("click", function () {
     svgElement.classList.add("accelerate");
+    clicSound.play();
     setTimeout(() => {
       svgElement.classList.remove("accelerate");
     }, 50); // Réglez la durée du clic en millisecondes
