@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const svgElement = document.querySelector(".zoomable-svg");
   const clicSound = document.getElementById("clicSound");
+  const clicSound2 = document.getElementById("clicSound2");
 
   // Affichez le cookie banner
 
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //FONCTION AUTOCLICK
 
   startButton.addEventListener("click", () => {
+    clicSound2.play();
     if (!autoClickEnabled && points >= 50) {
       subtractPoints(50);
       startAutoClick();
