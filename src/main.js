@@ -35,17 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
     points += i;
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
-    moneyValue++;
-
-    /*
-    if (multiMultiplier !== 1){
-      pointsmoney.textContent = moneyValue+nouveau;
-    } else {      
+    moneyValue++; 
+    if (multiMultiplier !== 1) {
+      moneyValue = moneyValue + nouveau -1;
       pointsmoney.textContent = moneyValue;
-    }    
-    */
+    } else {
+      pointsmoney.textContent = moneyValue;
+    }   
+   
     checkMulti();    
   });
+ 
 
 
   // bouton multi //
@@ -61,15 +61,15 @@ function augCoutMulti(){
   multiMultiplier ++;
 }
 
-
 function checkMulti(){ 
   let moneyValue = parseInt(pointsmoney.textContent);
   if (moneyValue >= (coutmulti*multiMultiplier)){
     multiOn();
+  } else {
+    multiOff();
   }
+
 }
-
-
    
 
 
@@ -78,7 +78,7 @@ multi.addEventListener('click', function(){
   pointsmoney.textContent = moneyValue - (coutmulti*multiMultiplier);
   
   augCoutMulti();
-  multiOff();
+  checkMulti();
 })
 
   //FONCTION AUTOCLICK
