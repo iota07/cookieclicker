@@ -19,6 +19,12 @@ body {
   }
 }
 
+// #image2 {
+//   position: absolute;
+//   opacity: 0; /* L'image est initialement invisible */
+//   transition: opacity 0.3s, transform 0.3s;
+// }
+
 @keyframes gradientShift {
   0% {
     background-position: 0 0;
