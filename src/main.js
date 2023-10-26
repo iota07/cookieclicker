@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookieclic = document.getElementById("cookie1");
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
+  const multi = document.getElementById("boutonmulti");
+  const coutmulti = 10;
+  let multiMultiplier = 1;
+  let nouveau = 5*multiMultiplier;
+  
 
   // FONCTION COCHON
   const svgElement = document.querySelector(".zoomable-svg");
@@ -31,8 +36,50 @@ document.addEventListener("DOMContentLoaded", function () {
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++;
-    pointsmoney.textContent = moneyValue;
+
+    /*
+    if (multiMultiplier !== 1){
+      pointsmoney.textContent = moneyValue+nouveau;
+    } else {      
+      pointsmoney.textContent = moneyValue;
+    }    
+    */
+    checkMulti();    
   });
+
+
+  // bouton multi //
+function multiOff(){
+  multi.disabled = true;
+}
+
+function multiOn(){
+  multi.disabled = false;
+}
+
+function augCoutMulti(){
+  multiMultiplier ++;
+}
+
+
+function checkMulti(){ 
+  let moneyValue = parseInt(pointsmoney.textContent);
+  if (moneyValue >= (coutmulti*multiMultiplier)){
+    multiOn();
+  }
+}
+
+
+   
+
+
+multi.addEventListener('click', function(){
+  let moneyValue = parseInt(pointsmoney.textContent);
+  pointsmoney.textContent = moneyValue - (coutmulti*multiMultiplier);
+  
+  augCoutMulti();
+  multiOff();
+})
 
   //FONCTION AUTOCLICK
 
@@ -47,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function autoClick() {
     addPoints(+1);
+    checkMulti();
   }
 
   function startAutoClick() {
@@ -76,5 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
     pointsmoney.textContent = 0;
   }
 
+  window.onload = multiOff();
+
   initializeGame();
 });
+
+
+
