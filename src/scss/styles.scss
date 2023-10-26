@@ -6,12 +6,6 @@ $h3-font-size: 15pt;
 
 // BREAKPOINT DESKTOP
 
-@include media-breakpoint-up(lg) {
-  .custom-body {
-    margin-left: 50%;
-  }
-}
-
 //BACKGROUND REFLECT
 body {
   background: linear-gradient(#f70090, #81044f, transparent);
