@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sass": "sass src/scss/styles.scss public/css/styles.css",
     "start": "vite",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
@@ -13,11 +14,11 @@
   },
   "devDependencies": {
     "gh-pages": "^6.0.0",
+    "sass": "^1.69.4",
     "vite": "^4.4.5"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.2",
-    "sass": "^1.69.4"
+    "bootstrap": "^5.3.2"
   }
 }

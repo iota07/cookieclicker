@@ -1,5 +1,4 @@
 import path from "path";
-import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -10,12 +9,19 @@ export default defineConfig({
       "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import '@/src/scss/styles.scss';`,
+      },
+    },
+  },
   server: {
     port: 8080,
     hot: true,
   },
   build: {
-    outDir: path.resolve(__dirname, "dist"), // Le répertoire de sortie pour les fichiers construits
+    outDir: path.resolve(__dirname, "dist"),
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "./src/main.js"),
