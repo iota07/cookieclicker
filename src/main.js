@@ -14,6 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
 
+  const cookieBanner = document.getElementById("cookie-banner");
+  const acceptButton = document.getElementById("accept-cookies");
+
+  // Affichez le cookie banner
+
+  acceptButton.addEventListener("click", () => {
+    // Masquez le cookie banner lors du clic
+    cookieBanner.style.display = "none";
+  });
+
   // FONCTION COCHON
   const svgElement = document.querySelector(".zoomable-svg");
 

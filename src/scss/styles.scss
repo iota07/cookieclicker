@@ -4,28 +4,17 @@ $h1-font-size: 5rem;
 $h2-font-size: 2.5rem;
 $h3-font-size: 15pt;
 
-// BREAKPOINT DESKTOP
-
 //BACKGROUND REFLECT
 
 body {
-  background: linear-gradient(#f70090, #81044f, transparent);
+  background: linear-gradient(#81044f, #f70090, transparent);
   background-size: 200% 200%;
   position: relative;
-  animation: gradientShift 10s linear infinite;
+
   @media (min-width: 992px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 200% 200%;
   }
 }
 
