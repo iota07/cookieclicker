@@ -16,8 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookieclic = document.getElementById("cookie1");
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
-  const boutonMulti = document.getElementById("boutonmulti");
-
+  const multi = document.getElementById("boutonmulti");
+  const coutmulti = 10;
+  let multiMultiplier = 1;
+  let nouveau = 5*multiMultiplier;
+  
 
   // FONCTION COCHON
   const svgElement = document.querySelector(".zoomable-svg");
@@ -36,24 +39,50 @@ document.addEventListener("DOMContentLoaded", function () {
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++;
-    pointsmoney.textContent = moneyValue;
-    updateMultiButton()
+
+    /*
+    if (multiMultiplier !== 1){
+      pointsmoney.textContent = moneyValue+nouveau;
+    } else {      
+      pointsmoney.textContent = moneyValue;
+    }    
+    */
+    checkMulti();    
   });
 
-  //FONCTION MULTI
-  updateMultiButton()
-  function updateMultiButton() {
-    const moneyValue = parseInt(pointsmoney.textContent);
-    boutonMulti.disabled = moneyValue === 0 || (moneyValue < 10 && moneyValue % 10 !== 0);
+
+  // bouton multi //
+function multiOff(){
+  multi.disabled = true;
+}
+
+function multiOn(){
+  multi.disabled = false;
+}
+
+function augCoutMulti(){
+  multiMultiplier ++;
+}
+
+
+function checkMulti(){ 
+  let moneyValue = parseInt(pointsmoney.textContent);
+  if (moneyValue >= (coutmulti*multiMultiplier)){
+    multiOn();
   }
+}
+
+
+   
+
+
+multi.addEventListener('click', function(){
+  let moneyValue = parseInt(pointsmoney.textContent);
+  pointsmoney.textContent = moneyValue - (coutmulti*multiMultiplier);
   
-
-
-
-boutonMulti.addEventListener("click", function() {
-  boutonMulti.disabled = true; // Désactive le bouton au clic
-});
-
+  augCoutMulti();
+  multiOff();
+})
 
   //FONCTION AUTOCLICK
 
@@ -68,6 +97,7 @@ boutonMulti.addEventListener("click", function() {
 
   function autoClick() {
     addPoints(+1);
+    checkMulti();
   }
 
   function startAutoClick() {
@@ -96,7 +126,11 @@ boutonMulti.addEventListener("click", function() {
     pointsElement.textContent = 0;
     pointsmoney.textContent = 0;
   }
-  
-  updateMultiButton();
+
+  window.onload = multiOff();
+
   initializeGame();
 });
+
+
+
