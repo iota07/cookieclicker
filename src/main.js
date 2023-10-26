@@ -33,12 +33,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //FONCTION COOKIECLIC
-
   cookieclic.addEventListener("click", () => {
     points += i;
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++;
+  
+    if (multiMultiplier !== 1) {
+      moneyValue = moneyValue + nouveau;
+      pointsmoney.textContent = moneyValue;
+    } else {
+      pointsmoney.textContent = moneyValue;
+    }
+  
+    checkMulti();
+  });
+  
+  //cookieclic.addEventListener("click", () => {
+    //points += i;
+    //pointsnobonus.textContent = points;
+    //let moneyValue = parseInt(pointsmoney.textContent);
+    //moneyValue++;
 
     /*
     if (multiMultiplier !== 1){
@@ -47,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
       pointsmoney.textContent = moneyValue;
     }    
     */
-    checkMulti();    
-  });
+    //checkMulti();    
+  //});
 
 
   // bouton multi //
