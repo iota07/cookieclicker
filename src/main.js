@@ -37,17 +37,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++;
     pointsmoney.textContent = moneyValue;
+    updateMultiButton()
   });
 
   //FONCTION MULTI
-
+  updateMultiButton()
   function updateMultiButton() {
-    if (points >= 7) {
-        boutonMulti.style.display = "block";
-    } else {
-        boutonMulti.style.display = "none";
-    }
-}
+    const moneyValue = parseInt(pointsmoney.textContent);
+    boutonMulti.disabled = moneyValue === 0 || (moneyValue < 10 && moneyValue % 10 !== 0);
+  }
+  
+
+
+
+boutonMulti.addEventListener("click", function() {
+  boutonMulti.disabled = true; // Désactive le bouton au clic
+});
 
 
   //FONCTION AUTOCLICK
