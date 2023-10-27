@@ -235,7 +235,34 @@ function checkx2(){
     x2On();
   } else {
     x2Off();
+  initializeGame();
+});
+
+
+
+
+let resetClicked = false; // Variable pour suivre si le bouton Reset a été cliqué
+
+
+// // le bouton RESET
+document.getElementById('resetButton').addEventListener('click', function() {
+  // Réinitialisation : rechargement de la page
+  
+  location.reload();
+  return resetClicked = "true";
+});
+
+
+
+// let resetClicked = false; // Variable pour suivre si le bouton Reset a été cliqué
+
+// // Fonction pour ouvrir la fenêtre modale au chargement de la page
+function openModalOnLoad() {
+  if (!resetClicked) { // Vérifier si le bouton Reset n'a pas été cliqué
+    document.getElementById("modalOverlay").style.display = "block";
+    document.getElementById("myModal").style.display = "block";
   }
+}
 
 }
 
@@ -308,3 +335,48 @@ document.getElementById("closeModal").addEventListener("click", function () {
   document.getElementById("modalOverlay").style.display = "none";
   document.getElementById("myModal").style.display = "none";
 });
+// Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
+window.addEventListener("DOMContentLoaded", openModalOnLoad);
+
+// Écouter le clic sur le bouton RESET
+document.getElementById("resetButton").addEventListener("click", function () {
+  resetClicked = true; // Le bouton Reset a été cliqué
+  // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
+  document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
+  document.getElementById("myModal").style.display = "none";
+});
+
+// Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
+document.getElementById("closeModal").addEventListener("click", function () {
+  document.getElementById("modalOverlay").style.display = "none";
+  document.getElementById("myModal").style.display = "none";
+});
+
+
+
+
+// // Fonction pour ouvrir la fenêtre modale au chargement de la page
+// function openModalOnLoad() {
+//   if (!resetClicked) { // Vérifier si le bouton Reset n'a pas été cliqué
+//     document.getElementById("modalOverlay").style.display = "block";
+//     document.getElementById("myModal").style.display = "block";
+//   }
+// }
+
+// // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
+// window.addEventListener("DOMContentLoaded", openModalOnLoad);
+
+// // Écouter le clic sur le bouton RESET
+// document.getElementById("resetButton").addEventListener("click", function () {
+//   resetClicked = true; // Le bouton Reset a été cliqué
+//   // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
+//   document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
+//   document.getElementById("myModal").style.display = "none";
+// });
+
+// // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
+// document.getElementById("closeModal").addEventListener("click", function () {
+//   document.getElementById("modalOverlay").style.display = "none";
+//   document.getElementById("myModal").style.display = "none";
+// });
+
