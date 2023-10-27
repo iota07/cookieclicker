@@ -12,7 +12,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import '@/src/scss/styles.scss';`,
+        additionalData: `@import '@/src/audio/soundscrate-animal-pig.mp3';`,
       },
     },
   },
