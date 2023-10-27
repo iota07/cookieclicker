@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let bonusCost = 7;
   let bonusMultiplier = 1;
   
-
+  const x2 = document.getElementById("boutonpop");
   const pointsElement = document.getElementById("scoreclickbonus");
   const startButton = document.getElementById("boutonautoclick");
   const cookieclic = document.getElementById("cookie1");
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const coutmulti = 10;
   let multiMultiplier = 1;
   let nouveau = 5;
-  
+  let costx2 = 10000;
+  let augx2 = 1;
 
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptButton = document.getElementById("accept-cookies");
@@ -61,7 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
       pointsmoney.textContent = moneyValue;
     }   
    
-    checkMulti();    
+    checkMulti();
+    checkx2();    
   });
  
 
@@ -108,6 +110,7 @@ multi.addEventListener('click', function(){
   
   augCoutMulti();
   checkMulti();
+  checkx2();
 })
 
   //FONCTION AUTOCLICK
@@ -126,6 +129,7 @@ multi.addEventListener('click', function(){
     clicSound2.play();
     addPoints(+1);
     checkMulti();
+    checkx2();
   }
 
   function startAutoClick() {
@@ -155,9 +159,54 @@ multi.addEventListener('click', function(){
     pointsmoney.textContent = 0;
   }
 
-  window.onload = multiOff();
+  /* bouton score X2 */
+
+  /*étendre le bouton x2*/
+  function x2Off(){
+    x2.disabled = true;
+  }
+  
+  /*allumé le bouton x2*/
+  function x2On(){
+    x2.disabled = false;
+  }
+  
+
+  /*Vérifie si on a assez d'argent pour acheter un bouton x2, si oui le bouton est allumé, si non il est éteint */
+function checkx2(){ 
+  let moneyValue = parseInt(pointsmoney.textContent);
+  if (moneyValue >= costx2){
+    x2On();
+  } else {
+    x2Off();
+  }
+
+}
+
+/*Après avoir appuyer sur le bouton x2, transform la valeur de cash en nombre, 
+ensuite soustrait à cash le coût du bouton x2.
+Augmente le nombre de fois utilisé +1
+vérifie si on a toujours assez d'argent comparé au nouveau coût du bouton multi*/
+
+x2.addEventListener('click', function(){
+  let moneyValue = parseInt(pointsmoney.textContent);
+  pointsmoney.textContent = moneyValue*2;    
+  augx2++;
+  setTimeout(function(){
+    x2.disabled = true;
+    pointsmoney.textContent = parseInt(pointsmoney.textContent) - costx2*augx2;
+  }, 2000);
+  
+})
+
+function loadbutton(){
+  multiOff();
+  x2Off();
+}
+  
 
   initializeGame();
+  window.onload = loadbutton();
 });
 
 
