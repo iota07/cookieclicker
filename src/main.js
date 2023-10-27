@@ -51,15 +51,29 @@ document.addEventListener("DOMContentLoaded", function () {
     pointsnobonus.textContent = points;
     let moneyValue = parseInt(pointsmoney.textContent);
     moneyValue++;
+    const iconHtml = '<i class="fa-solid fa-dollar-sign"></i>';
     if (multiMultiplier !== 1) {
       moneyValue = moneyValue + nouveau - 6;
-      pointsmoney.textContent = moneyValue;
+      pointsmoney.innerHTML = iconHtml + ' '+ moneyValue  ;
     } else {
-      pointsmoney.textContent = moneyValue;
+      pointsmoney.innerHTML = iconHtml + ' '+ moneyValue ;
     }
 
     checkMulti();
   });
+
+cookieclic.addEventListener("click", function () {
+  const dollarIcon = document.getElementById("dollar-icon");
+
+    // Ajoute une classe CSS pour l'animation de rotation
+    dollarIcon.classList.add("rotate-animation");
+
+    // Supprime la classe après un court délai pour réinitialiser l'animation
+    setTimeout(() => {
+        dollarIcon.classList.remove("rotate-animation");
+    }, 1000); // Réinitialisation de l'animation après 1 seconde (vous pouvez ajuster la durée selon vos préférences)
+});
+
 
   // bouton multi //
 
@@ -103,9 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function updateButtonText() {
     let x = coutmulti * multiMultiplier;
-    const buttonText = `Cost : ${x}`;
+    const buttonText = `${x}`;
     const bonusText = `+5 x : ${multiMultiplier - 1}`;
-    multi.innerHTML = `<div>${buttonText}</div><div>${bonusText}</div>`;
+    const iconHtml = '<i class="fa-solid fa-dollar-sign"></i>';
+    multi.innerHTML = `<div>${iconHtml} ${buttonText}</div><div>${bonusText}</div>`;
     return x;
   }
 
