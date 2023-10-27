@@ -1,5 +1,6 @@
 import path from "path";
 import { defineConfig } from "vite";
+import { copy } from "vite-plugin-copy";
 
 export default defineConfig({
   base: "/cookieclicker/",
@@ -10,11 +11,7 @@ export default defineConfig({
     },
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import '@/src/audio/soundscrate-animal-pig.mp3';`,
-      },
-    },
+    preprocessorOptions: {},
   },
   server: {
     port: 8080,
@@ -30,4 +27,12 @@ export default defineConfig({
     },
     emptyOutDir: true,
   },
+  plugins: [
+    copy({
+      targets: [
+        { src: "src/audio/clicsound.mp3", dest: "dist/audio" },
+        { src: "src/audio/clicsound2.mp3", dest: "dist/audio" },
+      ],
+    }),
+  ],
 });
