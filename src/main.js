@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
   const multi = document.getElementById("boutonmulti");
-  const coutmulti = 10;
+  let coutmulti = 10;
   let multiMultiplier = 1;
   let nouveau = 5;
   
@@ -71,6 +71,20 @@ function augCoutMulti(){
     nouveau +=5;
   };
 }
+function coutBouton () {
+  let x = coutmulti*multiMultiplier;
+  return x;
+}
+
+
+
+// Appelez cette fonction pour mettre à jour le texte du bouton lorsque nécessaire
+function augCoutMulti(){
+  multiMultiplier++;
+  nouveau += 5;
+  updateButtonText(); // Met à jour le texte du bouton
+}
+
 
 /*Vérifie si on a assez d'argent pour acheter un bouton multi, si oui le bouton est allumé, si non il est éteint */
 function checkMulti(){ 
@@ -82,19 +96,34 @@ function checkMulti(){
   }
 
 }
+function updateButtonText() {
+  let x = coutmulti*multiMultiplier;
+  const buttonText = `Cost : ${(x)}`;
+  const bonusText = `+5 x : ${multiMultiplier-1}`;
+  multi.innerHTML = `<div>${buttonText}</div><div>${bonusText}</div>`;
+  return x;
+}
 
-/*Après avoir appuyer sur le bouton multi, transform la valeur de cash en nombre, 
-ensuite soustrait à cash le coût du bouton multi X le nombre de fois utilisé.
-Augmente le nombre de fois utilisé +1
-vérifie si on a toujours assez d'argent comparé au nouveau coût du bouton multi*/
+// Déclarer une variable globale pour stocker le texte initial du bouton
+let initialButtonText = multi.innerHTML;
 
-multi.addEventListener('click', function(){
+// Gérer le clic sur le bouton multi
+multi.addEventListener('click', function() {
   let moneyValue = parseInt(pointsmoney.textContent);
-  pointsmoney.textContent = moneyValue - (coutmulti*multiMultiplier);
-  
+  pointsmoney.textContent = moneyValue - (coutmulti * multiMultiplier);
+
+  updateButtonText();
   augCoutMulti();
   checkMulti();
-})
+
+  // Déclencher un délai de 4 secondes pour réinitialiser le texte du bouton
+  setTimeout(function() {
+    multi.innerHTML = initialButtonText;
+  }, 4000); // Réinitialisation après 4 secondes
+});
+
+// ...
+
 
   //FONCTION AUTOCLICK
 
