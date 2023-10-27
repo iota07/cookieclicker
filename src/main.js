@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pointsmoney = document.getElementById("scoremoney");
   const multi = document.getElementById("boutonmulti");
   const coutmulti = 10;
+  const gameDuration = 1 * 60 * 1000;
   let multiMultiplier = 1;
   let nouveau = 5;
 
@@ -147,6 +148,13 @@ vérifie si on a toujours assez d'argent comparé au nouveau coût du bouton mul
     points = 0;
     pointsElement.textContent = 0;
     pointsmoney.textContent = 0;
+
+    startGameTimer();
+  }
+
+  //LE TIMER DU JEUX
+  function startGameTimer() {
+    setTimeout(() => {}, gameDuration);
   }
 
   window.onload = multiOff();
