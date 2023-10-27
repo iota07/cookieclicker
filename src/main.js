@@ -14,11 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const pointsnobonus = document.getElementById("scoreclick");
   const pointsmoney = document.getElementById("scoremoney");
 
-  // FONCTION COCHON
+  const cookieBanner = document.getElementById("cookie-banner");
+  const acceptButton = document.getElementById("accept-cookies");
+
   const svgElement = document.querySelector(".zoomable-svg");
+  const clicSound = document.getElementById("clicSound");
+  const clicSound2 = document.getElementById("clicSound2");
+
+  // Affichez le cookie banner
+
+  acceptButton.addEventListener("click", () => {
+    // Masquez le cookie banner lors du clic
+    cookieBanner.style.display = "none";
+  });
+
+  // FONCTION COCHON
 
   svgElement.addEventListener("click", function () {
     svgElement.classList.add("accelerate");
+    clicSound.play();
     setTimeout(() => {
       svgElement.classList.remove("accelerate");
     }, 50); // Réglez la durée du clic en millisecondes
@@ -37,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //FONCTION AUTOCLICK
 
   startButton.addEventListener("click", () => {
+    clicSound2.play();
     if (!autoClickEnabled && points >= 50) {
       subtractPoints(50);
       startAutoClick();
@@ -46,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function autoClick() {
+    clicSound2.play();
     addPoints(+1);
   }
 
