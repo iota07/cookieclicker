@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let points = 0;
   let autoClickEnabled = false;
   let autoClickInterval;
-  let bonusCost = 7;
-  let bonusMultiplier = 1;
-
-  
+    
   const x2 = document.getElementById("boutonpop");
   const pointsElement = document.getElementById("scoreclickbonus");
   const startButton = document.getElementById("boutonautoclick");
@@ -22,9 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let multiMultiplier = 1;
   let nouveau = 5;
   let costx2 = 10000;
-  let augx2 = 1;
-
-
+  let costAuto = 150;
+ 
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptButton = document.getElementById("accept-cookies");
 
@@ -49,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 50); // Réglez la durée du clic en millisecondes
   });
 
-  //FONCTION COOKIECLIC
+  //FONCTION COOKIECLICK ------------------------------------------------------------------------------------------------
 
   cookieclic.addEventListener("click", function () {
     points += i;
@@ -65,11 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }   
    
     checkMulti();
-    checkx2();    
+    checkx2();
+    checkAuto();
+        
   });
  
   
-  // bouton multi //
+  // bouton multi --------------------------------------------------------------------------------------------------
 
   /*étendre le bouton multi*/
   function multiOff() {
@@ -81,13 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     multi.disabled = false;
   }
 
-  /*ajoute 1 au multiplicateur = nombre de fois qu'on a utilisé le bouton multi*/
- 
-  function coutBouton() {
-    let x = coutmulti * multiMultiplier;
-    return x;
-  }
-
+  
   // Appelez cette fonction pour mettre à jour le texte du bouton lorsque nécessaire
   function augCoutMulti() {
     multiMultiplier++;
@@ -123,6 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
     updateButtonText();
     augCoutMulti();
     checkMulti();
+    checkx2();
+    checkAuto();
 
     // Déclencher un délai de 4 secondes pour réinitialiser le texte du bouton
     setTimeout(function () {
@@ -132,15 +126,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ...
 
-  //FONCTION AUTOCLICK
+  //FONCTION AUTOCLICK -------------------------------------------------------------------------
+
+  function autoClickOn(){
+    startButton.disabled = false;
+
+  }
+
+  function autoClickOff(){
+    startButton.disabled = true;
+  }
+
+  /*Vérifie si on a assez d'argent pour acheter un bouton auto, si oui le bouton est allumé, si non il est éteint */
+  function checkAuto() {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    if (moneyValue >= 150 && !autoClickEnabled) {
+      autoClickOn();
+    } else {
+      autoClickOff();
+    }
+  }
 
   startButton.addEventListener("click", () => {
     clicSound2.play();
-    if (!autoClickEnabled && points >= 50) {
-      subtractPoints(50);
+    if (!autoClickEnabled && costAuto >= 150) {
+      subtractPoints(150);
       startAutoClick();
       autoClickEnabled = true;
-      startButton.style.display = "none";
+      autoClickOff();
     }
   });
 
@@ -149,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addPoints(+1);
     checkMulti();
     checkx2();
+       
   }
 
   function startAutoClick() {
@@ -178,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pointsmoney.textContent = 0;
   }
 
-  /* bouton score X2 */
+  // bouton score X2 ----------------------------------------------------
 
   /*étendre le bouton x2*/
   function x2Off(){
@@ -190,11 +204,15 @@ document.addEventListener("DOMContentLoaded", function () {
     x2.disabled = false;
   }
   
-
+  // check if x2 is Enabled
+  let isX2Enabled = true;
+ 
   /*Vérifie si on a assez d'argent pour acheter un bouton x2, si oui le bouton est allumé, si non il est éteint */
 function checkx2(){ 
   let moneyValue = parseInt(pointsmoney.textContent);
-  if (moneyValue >= costx2){
+  if (moneyValue >= costx2 && isX2Enabled ){
+    x2On();
+  } else if (countdownStarted && isX2Enabled){
     x2On();
   } else {
     x2Off();
@@ -202,33 +220,60 @@ function checkx2(){
 
 }
 
-/*Après avoir appuyer sur le bouton x2, transform la valeur de cash en nombre, 
-ensuite soustrait à cash le coût du bouton x2.
-Augmente le nombre de fois utilisé +1
-vérifie si on a toujours assez d'argent comparé au nouveau coût du bouton multi*/
+// Déclarer une variable globale pour stocker le texte initial du bouton x2
+let x2ButtonText = x2.innerHTML;
+
+// check if countdown has started //
+let countdownStarted = false;
+
+function countdownx2(){
+  var count = 5;
+  var countdown = setInterval(function() {
+    count--;
+    x2.innerText = count + ' seconds left';
+    if (count === 0) {
+      clearInterval(countdown);
+      x2.innerHTML = x2ButtonText;
+      isX2Enabled = false;
+    }
+  }, 1000);
+}
 
 x2.addEventListener('click', function(){
-  let moneyValue = parseInt(pointsmoney.textContent);
-  pointsmoney.textContent = moneyValue*2;    
-  augx2++;
-  setTimeout(function(){
-    x2.disabled = true;
-    pointsmoney.textContent = parseInt(pointsmoney.textContent) - costx2*augx2;
-  }, 2000);
+  if (!countdownStarted) {
+    countdownStarted = true;
+    countdownx2();
+    let moneyValue = parseInt(pointsmoney.textContent);
+    if (moneyValue >= costx2) {
+      pointsmoney.textContent = moneyValue - costx2; // Deduct the cost of x2
+    }
+  }
   
-})
+  let moneyValue = parseInt(pointsmoney.textContent);
+  pointsmoney.textContent = moneyValue * 2; 
+  
+
+  setTimeout(function() {
+    
+    pointsmoney.textContent = parseInt(pointsmoney.textContent) - costx2;
+  }, 5000);
+  
+});
+
+
+// function to disable all buttons
 
 function loadbutton(){
   multiOff();
   x2Off();
-}
+  autoClickOff()
+};
   
-
   initializeGame();
-  window.onload = loadbutton();
+  window.onload = loadbutton(); // on load disable buttons
 });
 
-//FENETRE POP UP
+//FENETRE POP UP -------------------------------------------------------------------------------------------------
 
 // Fonction pour ouvrir la fenêtre modale au chargement de la page
 function openModalOnLoad() {
