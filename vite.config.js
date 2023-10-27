@@ -30,8 +30,8 @@ export default defineConfig({
   plugins: [
     copy({
       targets: [
-        { src: "src/audio/clicsound.mp3", dest: "dist/audio" },
-        { src: "src/audio/clicsound2.mp3", dest: "dist/audio" },
+        { src: "./src/audio/clicsound.mp3", dest: "dist/audio" },
+        { src: "./src/audio/clicsound2.mp3", dest: "dist/audio" },
       ],
     }),
   ],
