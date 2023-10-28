@@ -29,3 +29,14 @@ Il est **impossible d’avoir un score négatif**, on ne peut donc pas acheter d
 # Cookies everywhere ! check the wiki for the doc's !
 
 ![CookieClicker-example](https://media.giphy.com/media/3oKIPakqw5iwtPKq64/giphy.gif)
+
+## Contributor:
+
++ Julia
++ Loa
++ Han
++ Zineb
+
+## Progress Project
+
+The project is finished.
