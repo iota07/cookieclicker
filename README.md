@@ -29,3 +29,17 @@ Il est **impossible d’avoir un score négatif**, on ne peut donc pas acheter d
 # Cookies everywhere ! check the wiki for the doc's !
 
 ![CookieClicker-example](https://media.giphy.com/media/3oKIPakqw5iwtPKq64/giphy.gif)
+
+### Project starting date:
+23/10/2023
+
+## Progress Project
+
+The project is finished.
+
+### Collaborators:
+
+[Julia Michel Teixeira](https://github.com/Chickenroast)
+[Zineb Ezaabouji](https://github.com/neb244)
+[Loa Soumahoro](https://github.com/LoaGnadjouSoumahoro)
+[Hanesana Nhouvannasak](https://github.com/iota07)
