@@ -30,13 +30,16 @@ Il est **impossible d’avoir un score négatif**, on ne peut donc pas acheter d
 
 ![CookieClicker-example](https://media.giphy.com/media/3oKIPakqw5iwtPKq64/giphy.gif)
 
-## Contributor:
-
-+ Julia
-+ Loa
-+ Han
-+ Zineb
+### Project starting date:
+23/10/2023
 
 ## Progress Project
 
 The project is finished.
+
+### Collaborators:
+
+[Julia Michel Teixeira](https://github.com/Chickenroast)
+[Zineb Ezaabouji](https://github.com/neb244)
+[Loa Soumahoro](https://github.com/LoaGnadjouSoumahoro)
+[Hanesana Nhouvannasak](https://github.com/iota07)
