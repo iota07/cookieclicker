@@ -1,7 +1,9 @@
 // import "./scss/styles.scss";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function (initializeGame) {
   // NOS DECLARATIONS
+  const initialTime = 180; // 3 minutes en secondes
+  let currentTime = initialTime;
 
   let i = 1;
   let points = 0;
@@ -27,6 +29,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const svgElement = document.querySelector(".zoomable-svg");
   const clicSound = document.getElementById("clicSound");
   const clicSound2 = document.getElementById("clicSound2");
+
+  /**FONCTION POUR LE TIMER */
+  function updateCountdown() {
+    const minutes = Math.floor(currentTime / 60);
+    const seconds = currentTime % 60;
+
+    // Formatage du temps pour afficher avec 2 chiffres
+    const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+
+    // Mettre à jour l'élément HTML
+    document.getElementById("countdown").textContent = formattedTime;
+
+    // Vérifier si le temps est écoulé
+    if (currentTime <= 0) {
+      clearInterval(countdownInterval);
+      location.reload();
+    } else {
+      currentTime--; // Décrémenter le temps restant
+    }
+  }
+
+  // Mettre à jour le compteur de temps chaque seconde
+  const countdownInterval = setInterval(updateCountdown, 1000);
 
   // Affichez le cookie banner
 
@@ -90,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /*allumé le bouton multi*/
   function multiOn() {
     multi.disabled = false;
+    clicSound2.play();
   }
 
   // Appelez cette fonction pour mettre à jour le texte du bouton lorsque nécessaire
@@ -201,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     points = 0;
     pointsElement.textContent = 0;
     pointsmoney.textContent = 0;
+    updateCountdown();
   }
 
   // bouton score X2 ----------------------------------------------------
@@ -213,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /*allumé le bouton x2*/
   function x2On() {
     x2.disabled = false;
+    clicSound2.play();
   }
 
   // check if x2 is Enabled
@@ -240,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var count = 5;
     var countdown = setInterval(function () {
       count--;
-      x2.innerText = count + " seconds left";
+      x2.innerText = count + "seconds left";
       if (count === 0) {
         clearInterval(countdown);
         x2.innerHTML = x2ButtonText;
@@ -315,29 +345,31 @@ document.getElementById("resetButton").addEventListener("click", function () {
 document.getElementById("closeModal").addEventListener("click", function () {
   document.getElementById("modalOverlay").style.display = "none";
   document.getElementById("myModal").style.display = "none";
+
+  // // Fonction pour ouvrir la fenêtre modale au chargement de la page
+  // function openModalOnLoad() {
+  //   if (!resetClicked) { // Vérifier si le bouton Reset n'a pas été cliqué
+  //     document.getElementById("modalOverlay").style.display = "block";
+  //     document.getElementById("myModal").style.display = "block";
+  //   }
+  // }
+
+  // // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
+  // window.addEventListener("DOMContentLoaded", openModalOnLoad);
+
+  // // Écouter le clic sur le bouton RESET
+  // document.getElementById("resetButton").addEventListener("click", function () {
+  //   resetClicked = true; // Le bouton Reset a été cliqué
+  //   // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
+  //   document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
+  //   document.getElementById("myModal").style.display = "none";
+  // });
+
+  // // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
+  // document.getElementById("closeModal").addEventListener("click", function () {
+  //   document.getElementById("modalOverlay").style.display = "none";
+  //   document.getElementById("myModal").style.display = "none";
+  // });
+
+  // LEADER BORD
 });
-
-// // Fonction pour ouvrir la fenêtre modale au chargement de la page
-// function openModalOnLoad() {
-//   if (!resetClicked) { // Vérifier si le bouton Reset n'a pas été cliqué
-//     document.getElementById("modalOverlay").style.display = "block";
-//     document.getElementById("myModal").style.display = "block";
-//   }
-// }
-
-// // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
-// window.addEventListener("DOMContentLoaded", openModalOnLoad);
-
-// // Écouter le clic sur le bouton RESET
-// document.getElementById("resetButton").addEventListener("click", function () {
-//   resetClicked = true; // Le bouton Reset a été cliqué
-//   // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
-//   document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
-//   document.getElementById("myModal").style.display = "none";
-// });
-
-// // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
-// document.getElementById("closeModal").addEventListener("click", function () {
-//   document.getElementById("modalOverlay").style.display = "none";
-//   document.getElementById("myModal").style.display = "none";
-// });
