@@ -1,3 +1,5 @@
+// import "./scss/styles.scss";
+
 document.addEventListener("DOMContentLoaded", function () {
   // NOS DECLARATIONS
 
@@ -25,8 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const svgElement = document.querySelector(".zoomable-svg");
   const clicSound = document.getElementById("clicSound");
   const clicSound2 = document.getElementById("clicSound2");
-  // const ClicSound = new Audio("audio/clicsound.mp3");
-  // const clicSound2 = new Audio("audio/clicsound2.mp3");
 
   // Affichez le cookie banner
 
@@ -78,215 +78,206 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000); // Réinitialisation de l'animation après 1 seconde (vous pouvez ajuster la durée selon vos préférences)
   });
 
-  checkMulti();
-});
+  // bouton multi //
 
-// bouton multi //
+  // bouton multi --------------------------------------------------------------------------------------------------
 
-// bouton multi --------------------------------------------------------------------------------------------------
-
-/*étendre le bouton multi*/
-function multiOff() {
-  multi.disabled = true;
-}
-
-/*allumé le bouton multi*/
-function multiOn() {
-  multi.disabled = false;
-}
-
-// Appelez cette fonction pour mettre à jour le texte du bouton lorsque nécessaire
-function augCoutMulti() {
-  multiMultiplier++;
-  nouveau += 5;
-  updateButtonText(); // Met à jour le texte du bouton
-}
-
-/*Vérifie si on a assez d'argent pour acheter un bouton multi, si oui le bouton est allumé, si non il est éteint */
-function checkMulti() {
-  let moneyValue = parseInt(pointsmoney.textContent);
-  if (moneyValue >= coutmulti * multiMultiplier) {
-    multiOn();
-  } else {
-    multiOff();
+  /*étendre le bouton multi*/
+  function multiOff() {
+    multi.disabled = true;
   }
-}
-function updateButtonText() {
-  let x = coutmulti * multiMultiplier;
-  const buttonText = `${x}`;
-  const bonusText = `+5 x${multiMultiplier - 1}`;
-  const iconHtml = '<i class="fa-solid fa-dollar-sign"></i>';
-  multi.innerHTML = `<div>${iconHtml} ${buttonText}</div><div>${bonusText}</div>`;
-  return x;
-}
 
-// Déclarer une variable globale pour stocker le texte initial du bouton
-let initialButtonText = multi.innerHTML;
-
-// Gérer le clic sur le bouton multi
-multi.addEventListener("click", function () {
-  let moneyValue = parseInt(pointsmoney.textContent);
-  pointsmoney.textContent = moneyValue - coutmulti * multiMultiplier;
-
-  updateButtonText();
-  augCoutMulti();
-  checkMulti();
-  checkx2();
-  checkAuto();
-
-  // Déclencher un délai de 4 secondes pour réinitialiser le texte du bouton
-  setTimeout(function () {
-    multi.innerHTML = initialButtonText;
-  }, 4000); // Réinitialisation après 4 secondes
-});
-
-// ...
-
-//FONCTION AUTOCLICK -------------------------------------------------------------------------
-
-function autoClickOn() {
-  startButton.disabled = false;
-}
-
-function autoClickOff() {
-  startButton.disabled = true;
-}
-
-/*Vérifie si on a assez d'argent pour acheter un bouton auto, si oui le bouton est allumé, si non il est éteint */
-function checkAuto() {
-  let moneyValue = parseInt(pointsmoney.textContent);
-  if (moneyValue >= 150 && !autoClickEnabled) {
-    autoClickOn();
-  } else {
-    autoClickOff();
+  /*allumé le bouton multi*/
+  function multiOn() {
+    multi.disabled = false;
   }
-}
 
-startButton.addEventListener("click", () => {
-  clicSound2.play();
-  if (!autoClickEnabled && costAuto >= 150) {
-    subtractPoints(150);
-    startAutoClick();
-    autoClickEnabled = true;
-    autoClickOff();
+  // Appelez cette fonction pour mettre à jour le texte du bouton lorsque nécessaire
+  function augCoutMulti() {
+    multiMultiplier++;
+    nouveau += 5;
+    updateButtonText(); // Met à jour le texte du bouton
   }
-});
 
-function autoClick() {
-  clicSound2.play();
-  addPoints(+1);
-  checkMulti();
-  checkx2();
-}
-
-function startAutoClick() {
-  // TEMPS DU CLICK
-  autoClickInterval = setInterval(autoClick, 500);
-}
-
-/**
- * @description rajouter des points dans html
- * @param {number} value
- */
-
-function addPoints() {
-  let moneyValue = parseInt(pointsmoney.textContent);
-  moneyValue++;
-  pointsmoney.textContent = moneyValue;
-}
-
-function subtractPoints(value) {
-  pointsmoney.textContent -= value;
-}
-
-// Appelez cette fonction au chargement de la page pour initialiser le score.
-function initializeGame() {
-  points = 0;
-  pointsElement.textContent = 0;
-  pointsmoney.textContent = 0;
-
-  startGameTimer();
-}
-
-//LE TIMER DU JEUX
-function startGameTimer() {
-  setTimeout(() => {}, gameDuration);
-}
-
-// bouton score X2 ----------------------------------------------------
-
-/*étendre le bouton x2*/
-function x2Off() {
-  x2.disabled = true;
-}
-
-/*allumé le bouton x2*/
-function x2On() {
-  x2.disabled = false;
-}
-
-// check if x2 is Enabled
-let isX2Enabled = true;
-
-/*Vérifie si on a assez d'argent pour acheter un bouton x2, si oui le bouton est allumé, si non il est éteint */
-function checkx2() {
-  let moneyValue = parseInt(pointsmoney.textContent);
-  if (moneyValue >= costx2 && isX2Enabled) {
-    x2On();
-  } else if (countdownStarted && isX2Enabled) {
-    x2On();
-  } else {
-    x2Off();
-  }
-}
-
-// Déclarer une variable globale pour stocker le texte initial du bouton x2
-let x2ButtonText = x2.innerHTML;
-
-// check if countdown has started //
-let countdownStarted = false;
-
-function countdownx2() {
-  var count = 5;
-  var countdown = setInterval(function () {
-    count--;
-    x2.innerText = count + " seconds left";
-    if (count === 0) {
-      clearInterval(countdown);
-      x2.innerHTML = x2ButtonText;
-      isX2Enabled = false;
-    }
-  }, 1000);
-}
-
-x2.addEventListener("click", function () {
-  if (!countdownStarted) {
-    countdownStarted = true;
-    countdownx2();
+  /*Vérifie si on a assez d'argent pour acheter un bouton multi, si oui le bouton est allumé, si non il est éteint */
+  function checkMulti() {
     let moneyValue = parseInt(pointsmoney.textContent);
-    if (moneyValue >= costx2) {
-      pointsmoney.textContent = moneyValue - costx2; // Deduct the cost of x2
+    if (moneyValue >= coutmulti * multiMultiplier) {
+      multiOn();
+    } else {
+      multiOff();
+    }
+  }
+  function updateButtonText() {
+    let x = coutmulti * multiMultiplier;
+    const buttonText = `${x}`;
+    const bonusText = `+5 x${multiMultiplier - 1}`;
+    const iconHtml = '<i class="fa-solid fa-dollar-sign"></i>';
+    multi.innerHTML = `<div>${iconHtml} ${buttonText}</div><div>${bonusText}</div>`;
+    return x;
+  }
+
+  // Déclarer une variable globale pour stocker le texte initial du bouton
+  let initialButtonText = multi.innerHTML;
+
+  // Gérer le clic sur le bouton multi
+  multi.addEventListener("click", function () {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    pointsmoney.textContent = moneyValue - coutmulti * multiMultiplier;
+
+    updateButtonText();
+    augCoutMulti();
+    checkMulti();
+    checkx2();
+    checkAuto();
+
+    // Déclencher un délai de 4 secondes pour réinitialiser le texte du bouton
+    setTimeout(function () {
+      multi.innerHTML = initialButtonText;
+    }, 4000); // Réinitialisation après 4 secondes
+  });
+
+  // ...
+
+  //FONCTION AUTOCLICK -------------------------------------------------------------------------
+
+  function autoClickOn() {
+    startButton.disabled = false;
+  }
+
+  function autoClickOff() {
+    startButton.disabled = true;
+  }
+
+  /*Vérifie si on a assez d'argent pour acheter un bouton auto, si oui le bouton est allumé, si non il est éteint */
+  function checkAuto() {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    if (moneyValue >= 150 && !autoClickEnabled) {
+      autoClickOn();
+    } else {
+      autoClickOff();
     }
   }
 
-  let moneyValue = parseInt(pointsmoney.textContent);
-  pointsmoney.textContent = moneyValue * 2;
+  startButton.addEventListener("click", () => {
+    clicSound2.play();
+    if (!autoClickEnabled && costAuto >= 150) {
+      subtractPoints(150);
+      startAutoClick();
+      autoClickEnabled = true;
+      autoClickOff();
+    }
+  });
 
-  setTimeout(function () {
-    pointsmoney.textContent = parseInt(pointsmoney.textContent) - costx2;
-  }, 5000);
+  function autoClick() {
+    clicSound2.play();
+    addPoints(+1);
+    checkMulti();
+    checkx2();
+  }
+
+  function startAutoClick() {
+    // TEMPS DU CLICK
+    autoClickInterval = setInterval(autoClick, 500);
+  }
+
+  /**
+   * @description rajouter des points dans html
+   * @param {number} value
+   */
+
+  function addPoints() {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    moneyValue++;
+    pointsmoney.textContent = moneyValue;
+  }
+
+  function subtractPoints(value) {
+    pointsmoney.textContent -= value;
+  }
+
+  // Appelez cette fonction au chargement de la page pour initialiser le score.
+  function initializeGame() {
+    points = 0;
+    pointsElement.textContent = 0;
+    pointsmoney.textContent = 0;
+  }
+
+  // bouton score X2 ----------------------------------------------------
+
+  /*étendre le bouton x2*/
+  function x2Off() {
+    x2.disabled = true;
+  }
+
+  /*allumé le bouton x2*/
+  function x2On() {
+    x2.disabled = false;
+  }
+
+  // check if x2 is Enabled
+  let isX2Enabled = true;
+
+  /*Vérifie si on a assez d'argent pour acheter un bouton x2, si oui le bouton est allumé, si non il est éteint */
+  function checkx2() {
+    let moneyValue = parseInt(pointsmoney.textContent);
+    if (moneyValue >= costx2 && isX2Enabled) {
+      x2On();
+    } else if (countdownStarted && isX2Enabled) {
+      x2On();
+    } else {
+      x2Off();
+    }
+  }
+
+  // Déclarer une variable globale pour stocker le texte initial du bouton x2
+  let x2ButtonText = x2.innerHTML;
+
+  // check if countdown has started //
+  let countdownStarted = false;
+
+  function countdownx2() {
+    var count = 5;
+    var countdown = setInterval(function () {
+      count--;
+      x2.innerText = count + " seconds left";
+      if (count === 0) {
+        clearInterval(countdown);
+        x2.innerHTML = x2ButtonText;
+        isX2Enabled = false;
+      }
+    }, 1000);
+  }
+
+  x2.addEventListener("click", function () {
+    if (!countdownStarted) {
+      countdownStarted = true;
+      countdownx2();
+      let moneyValue = parseInt(pointsmoney.textContent);
+      if (moneyValue >= costx2) {
+        pointsmoney.textContent = moneyValue - costx2; // Deduct the cost of x2
+      }
+    }
+
+    let moneyValue = parseInt(pointsmoney.textContent);
+    pointsmoney.textContent = moneyValue * 2;
+
+    setTimeout(function () {
+      pointsmoney.textContent = parseInt(pointsmoney.textContent) - costx2;
+    }, 5000);
+  });
+
+  // function to disable all buttons
+
+  function loadbutton() {
+    multiOff();
+    x2Off();
+    autoClickOff();
+  }
+
+  initializeGame();
+  window.onload = loadbutton(); // on load disable buttons
 });
-
-// function to disable all buttons
-
-function loadbutton() {
-  multiOff();
-  x2Off();
-  autoClickOff();
-}
-
-initializeGame();
-window.onload = loadbutton(); // on load disable buttons
 
 let resetClicked = false; // Variable pour suivre si le bouton Reset a été cliqué
 
