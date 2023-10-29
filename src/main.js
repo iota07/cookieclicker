@@ -55,12 +55,29 @@ document.addEventListener("DOMContentLoaded", function (initializeGame) {
   // Mettre à jour le compteur de temps chaque seconde
   const countdownInterval = setInterval(updateCountdown, 1000);
 
-  // Affichez le cookie banner
+  // Affichez le cookie banner qu'une fois tout les 365 jours
+
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie =
+      name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
+  }
+
+  function checkCookie() {
+    if (document.cookie.indexOf("cookieAccepted=true") === -1) {
+      document.getElementById("cookie-banner").style.display = "block";
+    } else {
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+  }
 
   acceptButton.addEventListener("click", () => {
-    // Masquez le cookie banner lors du clic
-    cookieBanner.style.display = "none";
+    setCookie("cookieAccepted", "true", 365); // Le cookie expire après un an
+    document.getElementById("cookie-banner").style.display = "none";
   });
+
+  checkCookie();
 
   // FONCTION COCHON
 
@@ -91,18 +108,6 @@ document.addEventListener("DOMContentLoaded", function (initializeGame) {
     checkMulti();
     checkx2();
     checkAuto();
-  });
-
-  cookieclic.addEventListener("click", function () {
-    const dollarIcon = document.getElementById("dollar-icon");
-
-    // Ajoute une classe CSS pour l'animation de rotation
-    dollarIcon.classList.add("rotate-animation");
-
-    // Supprime la classe après un court délai pour réinitialiser l'animation
-    setTimeout(() => {
-      dollarIcon.classList.remove("rotate-animation");
-    }, 1000); // Réinitialisation de l'animation après 1 seconde (vous pouvez ajuster la durée selon vos préférences)
   });
 
   // bouton multi //
@@ -311,17 +316,26 @@ document.addEventListener("DOMContentLoaded", function (initializeGame) {
 
 let resetClicked = false; // Variable pour suivre si le bouton Reset a été cliqué
 
-// // le bouton RESET
-document.getElementById("resetButton").addEventListener("click", function () {
-  // Réinitialisation : rechargement de la page
+// // le bouton RESET------------------------------------------------------------------------------------------------------------------------------------------------------
+// Récupérez les éléments bouton Reset
+const resetButtonMobile = document.getElementById("resetButtonMobile");
+const resetButtonDesktop = document.getElementById("resetButtonDesktop");
 
+// Gérez le clic sur le bouton Reset (mobile)
+resetButtonMobile.addEventListener("click", function () {
+  // Réinitialisation : rechargement de la page
   location.reload();
-  return (resetClicked = "true");
+});
+
+// Gérez le clic sur le bouton Reset (desktop)
+resetButtonDesktop.addEventListener("click", function () {
+  // Réinitialisation : rechargement de la page
+  location.reload();
 });
 
 // let resetClicked = false; // Variable pour suivre si le bouton Reset a été cliqué
 
-// // Fonction pour ouvrir la fenêtre modale au chargement de la page
+// // Fonction pour ouvrir la fenêtre modale au chargement de la page......................................................................................
 function openModalOnLoad() {
   if (!resetClicked) {
     // Vérifier si le bouton Reset n'a pas été cliqué
@@ -333,43 +347,8 @@ function openModalOnLoad() {
 // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
 window.addEventListener("DOMContentLoaded", openModalOnLoad);
 
-// Écouter le clic sur le bouton RESET
-document.getElementById("resetButton").addEventListener("click", function () {
-  resetClicked = true; // Le bouton Reset a été cliqué
-  // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
-  document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
-  document.getElementById("myModal").style.display = "none";
-});
-
 // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
 document.getElementById("closeModal").addEventListener("click", function () {
   document.getElementById("modalOverlay").style.display = "none";
   document.getElementById("myModal").style.display = "none";
-
-  // // Fonction pour ouvrir la fenêtre modale au chargement de la page
-  // function openModalOnLoad() {
-  //   if (!resetClicked) { // Vérifier si le bouton Reset n'a pas été cliqué
-  //     document.getElementById("modalOverlay").style.display = "block";
-  //     document.getElementById("myModal").style.display = "block";
-  //   }
-  // }
-
-  // // Appeler la fonction pour ouvrir la fenêtre modale au chargement de la page
-  // window.addEventListener("DOMContentLoaded", openModalOnLoad);
-
-  // // Écouter le clic sur le bouton RESET
-  // document.getElementById("resetButton").addEventListener("click", function () {
-  //   resetClicked = true; // Le bouton Reset a été cliqué
-  //   // Réinitialiser les valeurs ou effectuer d'autres actions de réinitialisation ici
-  //   document.getElementById("modalOverlay").style.display = "none"; // Cacher la fenêtre modale
-  //   document.getElementById("myModal").style.display = "none";
-  // });
-
-  // // Fermer la fenêtre modale lorsque le bouton "Fermer" est cliqué
-  // document.getElementById("closeModal").addEventListener("click", function () {
-  //   document.getElementById("modalOverlay").style.display = "none";
-  //   document.getElementById("myModal").style.display = "none";
-  // });
-
-  // LEADER BORD
 });
