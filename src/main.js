@@ -323,12 +323,14 @@ const resetButtonDesktop = document.getElementById("resetButtonDesktop");
 
 // Gérez le clic sur le bouton Reset (mobile)
 resetButtonMobile.addEventListener("click", function () {
+  resetClicked = true;
   // Réinitialisation : rechargement de la page
   location.reload();
 });
 
 // Gérez le clic sur le bouton Reset (desktop)
 resetButtonDesktop.addEventListener("click", function () {
+  resetClicked = true;
   // Réinitialisation : rechargement de la page
   location.reload();
 });
