@@ -6,7 +6,7 @@ Project start : 23/10/2023
 
 Project end : 29/10/2023
 
-![image](https://github.com/Chickenroast/cookieclicker/assets/60290487/619cac50-bdf1-4681-b044-3a2d9335307e)
+![image](https://github.com/iota07/cookieclicker/blob/main/src/images/278837383-619cac50-bdf1-4681-b044-3a2d9335307e.png)
 
 - inspiration :
   [Link text Here](https://dribbble.com/shots/6474110-Mobile-App-for-Retailers-and-Contractors-Clicker-App-Design/attachments/6474110-Mobile-App-for-Retailers-and-Contractors-Clicker-App-Design?mode=media)
