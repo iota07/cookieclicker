@@ -1,6 +1,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import { copy } from "vite-plugin-copy";
+import ViteSassPlugin from 'vite-plugin-sass';
 
 export default defineConfig({
   base: "/cookieclicker/",
@@ -28,6 +29,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   plugins: [
+    ViteSassPlugin(),
     copy({
       targets: [
         { src: "./src/audio/clicsound.mp3", dest: "dist/audio" },
