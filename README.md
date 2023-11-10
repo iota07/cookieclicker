@@ -11,7 +11,7 @@ Project end : 29/10/2023
 - inspiration :
   [Link text Here](https://dribbble.com/shots/6474110-Mobile-App-for-Retailers-and-Contractors-Clicker-App-Design/attachments/6474110-Mobile-App-for-Retailers-and-Contractors-Clicker-App-Design?mode=media)
 
-## Techs :
+## setup:
 
 - Bootstrap [Link here](https://www.npmjs.com/package/bootstrap)
 - Sass [Link Here](https://www.npmjs.com/package/sass)
@@ -25,10 +25,13 @@ Project end : 29/10/2023
 Install with npm go check on the Links behind.
 Deploy with \ Link incoming / gh-pages and vite.
 
-## The Game :
+## The Game:
 
-The game have 3 bottons can encrase your score, but carrefull they have a cost.
+The game have 3 buttons that can increase your money, but they have a cost.
 ⏱️Game time : 3 minutes
-🏆Encrase your score : clic on the Dollar for win and dont forget the bonus.
-🎁You have 2 score one of your clic and one with the bonus for shopping.
+🏆Increase your money : clic on the pig to earn money.
+🎁You can see your number of click and how much money you earnt.
 
+## Author:
+
+Hanesana Nhouvannasak
