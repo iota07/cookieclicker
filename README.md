@@ -1,6 +1,6 @@
 # 🍪 PiggyClicker
 
-SEE PROJECT [Link](https://iota07.github.io/cookieclicker/)
+SEE PROJECT  [Live Demo](https://iota07.github.io/cookieclicker/)
 
 Project start : 23/10/2023
 
